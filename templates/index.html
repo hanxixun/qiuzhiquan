@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}拼客学院 - IT校招求职圈{% endblock %}
+{% block content %}
+    <!-- Header banner栏 -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="{% url 'interlist' %}">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=名企面经');"></div>
+                </a>
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="{% url 'interlist' %}">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=大神分享');"></div>
+                </a>
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="{% url 'interlist' %}">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=技术博文');"></div>
+                </a>
+                <div class="carousel-caption">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+    <!-- Page Content 网页正文 -->
+    <div class="container">
+        <!--  网站简介 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    欢迎来到IT校招求职圈！
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;名企面经</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>来自一线IT名企校招求职面经,让你感受校招战场的残酷对决.连续四年的求职干货,帮助你更好的走上校招之路.</p>
+                        <a href="{% url 'interlist' %}" class="btn btn-default">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-weixin" aria-hidden="true"></i>&nbsp;大神分享</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>腾讯 阿里 百度 网易 360 京东 华为... 师兄师姐亲临拼客学院,分享实用的职场经验,奉献精彩的技术专题,让你领先一步!</p>
+                        <a href="#" class="btn btn-default">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-dribbble" aria-hidden="true"></i>&nbsp;技术博文</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>网络安全 系统运维 Web前端 后端开发 数据库  ... 你想学的技术,都在这里啦. 快点来加入我们吧,一起走向全栈大神之路! </p>
+                        <a href="#" class="btn btn-default">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section 名企面经 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">精选面经
+                    <a style="float: right" href="#" class="btn btn-default">更多>></a>
+                </h2>
+
+            </div>
+            {% for interview in all_interviews %}
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'interdetail' interview.id %}">
+                    <img width="700" height="450" class="img-responsive img-portfolio img-hover"
+                         src="{{ MEDIA_URL }}{{ interview.image }}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Portfolio Section 大神分享 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">最新分享
+                    <a style="float: right" href="{% url 'interlist' %}" class="btn btn-default">更多>></a>
+                </h2>
+            </div>
+            {% for interview in all_interviews %}
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'interdetail' interview.id %}">
+                    <img width="700" height="450" class="img-responsive img-portfolio img-hover"
+                         src="{{ MEDIA_URL }}{{ interview.image }}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Portfolio Section 技术博文 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">博文干货
+                    <a style="float: right" href="{% url 'interlist' %}" class="btn btn-default">更多>></a>
+                </h2>
+            </div>
+            {% for interview in all_interviews %}
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'interdetail' interview.id %}">
+                    <img width="700" height="450" class="img-responsive img-portfolio img-hover"
+                         src="{{ MEDIA_URL }}{{ interview.image }}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+
+

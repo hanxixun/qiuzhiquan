@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}常见问题 - IT校招求职圈{% endblock %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">常见问题
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">首页</a>
+                    </li>
+                    <li class="active">常见问题</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel-group" id="accordion">
+                    {% for faq in all_faqs %}
+                        {% if faq.id == 5 %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            {{ faq.question }}</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% elif faq.id == 6 %}
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                {{ faq.question }}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {{ faq.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+                        {% elif faq.id == 7 %}
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                                {{ faq.question }}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {{ faq.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+                        {% elif faq.id == 8 %}
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                                {{ faq.question }}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {{ faq.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+                         {% elif faq.id == 9 %}
+{#                                 <div class="panel panel-default">#}
+{#                                    <div class="panel-heading">#}
+{#                                        <h4 class="panel-title">#}
+{#                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">#}
+{#                                                {{ faq.question }}#}
+{#                                            </a>#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div id="collapseFive" class="panel-collapse collapse">#}
+{#                                        <div class="panel-body">#}
+{#                                            {{ faq.answer }}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                         {% elif faq.id == 16 %}#}
+{#                                 <div class="panel panel-default">#}
+{#                                    <div class="panel-heading">#}
+{#                                        <h4 class="panel-title">#}
+{#                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">#}
+{#                                                {{ faq.question }}#}
+{#                                            </a>#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div id="collapseSix" class="panel-collapse collapse">#}
+{#                                        <div class="panel-body">#}
+{#                                            {{ faq.answer }}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                         {% elif faq.id == 17 %}#}
+{#                                 <div class="panel panel-default">#}
+{#                                    <div class="panel-heading">#}
+{#                                        <h4 class="panel-title">#}
+{#                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">#}
+{#                                                {{ faq.question }}#}
+{#                                            </a>#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div id="collapseSeven" class="panel-collapse collapse">#}
+{#                                        <div class="panel-body">#}
+{#                                            {{ faq.answer }}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                         {% elif faq.id == 18 %}#}
+{#                                 <div class="panel panel-default">#}
+{#                                    <div class="panel-heading">#}
+{#                                        <h4 class="panel-title">#}
+{#                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">#}
+{#                                                {{ faq.question }}#}
+{#                                            </a>#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div id="collapseEight" class="panel-collapse collapse">#}
+{#                                        <div class="panel-body">#}
+{#                                            {{ faq.answer }}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

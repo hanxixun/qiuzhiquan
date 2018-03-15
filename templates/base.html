@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}拼客学院 - 模板文件 {% endblock %}</title>
+
+    <!-- 加载CSS脚本 -->
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    {% block css %}{% endblock %}
+
+
+</head>
+
+<body>
+    {% block banner %}
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-spinner fa-spin fa-fw"></i>&nbsp; IT校招求职圈</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active" >
+                        <a href="{% url 'index' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;首页</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'interlist' %}"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;名企面经</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-weixin" aria-hidden="true"></i>&nbsp;大神分享<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">在线分享会</a>
+                            </li>
+                            <li>
+                                <a href="#">大神面对面</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-dribbble" aria-hidden="true"></i>&nbsp;技术博文<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="active">
+                                <a href="#">Python</a>
+                            </li>
+                            <li>
+                                <a href="#">Django</a>
+                            </li>
+                            <li>
+                                <a href="#">Security</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{ request.user.username }}<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'logout' %}">注销</a>
+                            </li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp; 加入<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'login' %}">登录</a>
+                                <a href="{% url 'register' %}">注册</a>
+                            </li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+    <!-- Content 内容区 -->
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <!-- 页脚 -->
+    <div class="footor" style="background-color: #222">
+        <span style="line-height:60px;color:#fff;padding-left:65px">Copyright &copy; 2013-2017 拼客学院 版权所有
+        </span>
+        <span style="line-height:60px;color:#fff;float:right;padding-right:65px">
+            <i class="fa fa-phone-square fa-lg" aria-hidden="true"></i>&nbsp;<a style="color: #ffffff " href="{% url 'contact' %}">联系我们</a>
+        </span>
+        <span style="line-height:60px;color:#fff;float:right;padding-right:50px">
+            <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i>&nbsp;<a style="color: #ffffff " href="{% url 'faq' %}">常见问题</a>
+        </span>
+        <span style="line-height:60px;color:#fff;float:right;padding-right:50px">
+            <i class="fa fa-youtube-play fa-lg" aria-hidden="true"></i>&nbsp;<a style="color: #ffffff " href="http://edu.51cto.com/lecturer/index/user_id-7749507.html">在线课程</a>
+        </span>
+        <span style="line-height:60px;color:#fff;float:right;padding-right:50px">
+            <i class="fa fa-weibo fa-lg"></i>&nbsp;<a style="color: #ffffff " href="http://www.weibo.com/jaykingchen">新浪微博</a>
+        </span>
+    </div>
+    {% endblock %}
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 3000 //changes the speed
+    })
+    </script>
+
+    {% block js %}
+        <script src="{% static 'js/jquery.goup.min.js' %}"></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $.goup({
+                trigger: 50,
+                bottomOffset: 60,
+                locationOffset: 20,
+                title: '',
+                titleAsText: true
+            });
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

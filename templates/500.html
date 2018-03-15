@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}500 - IT校招求职圈{% endblock %}
+{% block content %}
+    <!-- 网页内容区 -->
+    <div class="container">
+        <!-- Page Heading 面包屑-->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">500
+                    <small>Page Not Found</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">首页</a>
+                    </li>
+                    <li class="active">500</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jumbotron">
+                    <h1><span class="error-404">500</span>
+                    </h1>
+                    <p>oh,服务器发生了意外的错误?! 别担心,尝试到网站其他页面逛逛吧!</p>
+                    <ul>
+                        <li>
+                            <a href="{% url 'index' %}">首页</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}">联系</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'faq' %}">答疑</a>
+                        </li>
+                        <li>
+                            名企面经
+                            <ul>
+                                <li>
+                                    <a href="{% url 'interlist' %}">最新出炉的腾讯面经</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">超详细的网易面经</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">最全网络安全面试攻略</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            大神分享
+                            <ul>
+                                <li>
+                                    <a href="{% url 'interlist' %}">腾讯大神分享</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">网易大神分享</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">中国移动大神分享</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            技术博文
+                            <ul>
+                                <li>
+                                    <a href="{% url 'interlist' %}">Python专题</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">Django专题</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'interlist' %}">Web安全专题</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+{% endblock %}

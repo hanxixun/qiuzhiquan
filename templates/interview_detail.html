@@ -1,0 +1,116 @@
+{% extends "interview_list.html" %}
+{% load staticfiles %}
+{% block title %}面经详情 - IT校招求职圈{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- 面包屑导航 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ interview.title }}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'interlist' %}">名企面经</a>
+                    </li>
+                    <li class="active">面经详情</li>
+                </ol>
+            </div>
+        </div>
+        <!-- 左边内容区域 -->
+        <div class="col-lg-8">
+
+            <p><i class="fa fa-clock-o"></i>发表于{{ interview.pub_time }}&nbsp;&nbsp;阅读次数{{ interview.read_counts }}</p>
+            <hr>
+            <img class="img-responsive" src="{{ MEDIA_URL }}{{ interview.image }}"
+                 alt="{{ MEDIA_URL }}{{ interview.image }}">
+            <hr>
+
+            <!-- 面经正文-->
+            {% autoescape off %}
+            <p>
+                {{ interview.content }}
+            </p>
+            {% endautoescape %}
+            <hr>
+
+            <!-- 评论框-->
+            <div class="well">
+                <h4>说点什么吧:</h4>
+                <form role="form" method="post" action="{% url 'addcomment' interview.id %}">
+                    <div class="form-group">
+                        <textarea name="comment" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                {% csrf_token %}
+                </form>
+            </div>
+            <hr>
+
+            <!-- 评论内容 -->
+            {% for comment in comments %}
+                 <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading">{{ comment.user.image }}
+                            {{ comment.user.username }}
+                            <small>{{ comment.pub_time }}</small>
+                        </h5>
+                        {{ comment.comment }}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+            <hr>
+        </div>
+        <!-- 右边内容区域 -->
+        <div class="col-md-4">
+            <div class="well">
+                <h4>作者简介</h4>
+                <p>{{ interview.author.desc }}</p>
+            </div>
+
+            <div class="well">
+                <h4>相关推荐</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
+                            {% for recommended_interview in recommended_interviews %}
+                                <li>
+                                    <a href="{% url 'interdetail' recommended_interview.id %}">{{ recommended_interview.title | slice:":15" | add:"..." }}</a>
+                                    &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读{{ recommended_interview.read_counts }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="well">
+                <h4>更多推荐</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
+                            {% for recommended_interview2 in recommended_interviews2 %}
+                               <li>
+                                   <a href="{% url 'interdetail' recommended_interview2.id %}">{{ recommended_interview2.title | slice:":15" | add:"..." }}</a>
+                                   &nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp阅读{{ recommended_interview2.read_counts }}
+                                </li>
+                            {% endfor %}
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

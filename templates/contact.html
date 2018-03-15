@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}联系我们 - IT校招求职圈{% endblock %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">联系我们
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">首页</a>
+                    </li>
+                    <li class="active">联系</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <!-- 百度地图  -->
+                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="http://j.map.baidu.com/UdMGe"></iframe>
+            </div>
+            <div class="col-md-4">
+                <h2>CONTACT US</h2>
+                <p><i class="fa fa-weixin fa-lg"></i>
+                    微信公众号: 拼客学院 </p>
+                <p><i class="fa fa-phone fa-lg"></i>
+                    电话: 020-31077786</p>
+                <p><i class="fa fa-envelope-o fa-lg"></i>
+                    邮箱: <a href="mailto:jaykingchen@pinginglab.net">jaykingchen@pinginglab.net</a>
+                </p>
+                <p><i class="fa fa-clock-o fa-lg"></i>
+                    咨询: 周一~五 早上9:00 - 下午 6:00 </p>
+                <p><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                    地址: 广州大学城信息枢纽楼203</p>
+            </div>
+        </div>
+    <hr>
+    </div>
+{% endblock %}
